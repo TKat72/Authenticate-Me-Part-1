@@ -12,6 +12,18 @@ npx dotenv sequelize db:migrate
  to check in psql
  psql <database name> -c 'SELECT * FROM "Users"'
 
+login
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+  },
+  body: JSON.stringify({ credential: 'demo@demo.com', password: 'password' })
+}).then(res => res.json()).then(data => console.log(data));
+
+ add new one
 
  fetch('/api/users', {
   method: 'POST',
