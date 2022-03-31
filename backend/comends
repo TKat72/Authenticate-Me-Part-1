@@ -11,3 +11,17 @@ npx dotenv sequelize db:migrate
  npx dotenv sequelize db:seed:all
  to check in psql
  psql <database name> -c 'SELECT * FROM "Users"'
+
+
+ fetch('/api/users', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `aiYS3yYF-G9DB7KVtxt7patyB1wnpYuLpU-w`
+  },
+  body: JSON.stringify({
+    email: 'sp@spider.man',
+    username: 'Spy',
+    password: 'password'
+  })
+}).then(res => res.json()).then(data => console.log(data));
