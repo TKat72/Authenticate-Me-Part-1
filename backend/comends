@@ -37,3 +37,17 @@ fetch('/api/session', {
     password: 'password'
   })
 }).then(res => res.json()).then(data => console.log(data));
+
+
+fetch('/api/users', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `341OmZA6-dnAxYotycAkSjB0lq6wTAhKzOs8`
+  },
+  body: JSON.stringify({
+    email: 'firestar@spider.man',
+    username: 'Firestar',
+    password: ''
+  })
+}).then(res => res.json()).then(data => console.log(data));
