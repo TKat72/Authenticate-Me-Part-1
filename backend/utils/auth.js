@@ -31,22 +31,28 @@ const setTokenCookie = (res, user) => {
 
 
 const restoreUser = (req, res, next) => {
-
-    const { token } = req.cookie;
+    // token parsed from cookies
+    const { token } = req.cookies;
 
     return jwt.verify(token, secret, null, async (err, jwtPayload) => {
-        if (err) return next();
+        if (err) {
+            return next();
+        }
+
         try {
             const { id } = jwtPayload.data;
             req.user = await User.scope('currentUser').findByPk(id);
-        } catch (error) {
+        } catch (e) {
             res.clearCookie('token');
             return next();
         }
+
         if (!req.user) res.clearCookie('token');
+
         return next();
-    })
-}
+    });
+};
+
 const requireAuth = [restoreUser, (req, _res, next) => {
     if (req.user) return next();
     const err = new Error('Unauthorized');
