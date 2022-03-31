@@ -1,0 +1,13 @@
+generte migration and models
+npx sequelize model:generate --name User --attributes username:string,email:string,hashedPassword:string
+
+npx dotenv sequelize db:migrate
+  genereete seeds
+
+  npx sequelize seed:generate --name demo-user
+
+ seed data
+
+ npx dotenv sequelize db:seed:all
+ to check in psql
+ psql <database name> -c 'SELECT * FROM "Users"'
