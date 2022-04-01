@@ -1,0 +1,21 @@
+
+.formWparer{
+    background-color: rgb(210, 210, 218);
+     position: absolute;
+      width: 300px;
+    margin:  250px;
+
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form label{
+
+    padding: 10px;
+}
+.form button{
+    margin: 10px;
+}
