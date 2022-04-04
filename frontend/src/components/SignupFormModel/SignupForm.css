@@ -1,15 +1,11 @@
-.formWparer{
-    background-color: rgb(210, 210, 218);
-     position: absolute;
-      width: 300px;
-    margin:  250px;
 
-}
 .formSignUp{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px;
+    width: 200px;
 }
 .formSignUp label{
 
@@ -17,4 +13,7 @@
 }
 .formSignUp button{
     margin: 10px;
+}
+.formSignUp input{
+    border-radius: 5px;
 }

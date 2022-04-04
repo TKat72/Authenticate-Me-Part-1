@@ -1,9 +1,6 @@
 /* TODO Add site wide styles */
-.navBar{
+body{
     display: flex;
-    justify-content: flex-end;
-}
-.navBar .navLink{
-    margin: 10px;
-
+    justify-content: center;
+    background-color: rgb(189, 187, 187);
 }

@@ -1,16 +1,12 @@
 
-.formWparer{
-    background-color: rgb(210, 210, 218);
-     position: absolute;
-      width: 300px;
-    margin:  250px;
 
-}
 .form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px;
+
 }
 .form label{
 
@@ -18,4 +14,9 @@
 }
 .form button{
     margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.form input {
+    border-radius: 5px;
 }
