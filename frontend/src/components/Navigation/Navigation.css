@@ -1,0 +1,26 @@
+.navBar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width:80rem;
+    border-radius: 10px;
+    border: 0.1rem solid gray;
+    box-shadow: rgba(226, 224, 224, 0.815) 0px 5px 15px;
+
+
+}
+.navBar .homeLink{
+
+    margin-right: 1035px;
+}
+ .navBar button{
+     margin: 5px;
+     margin-right: 18px;
+ }
+.fa-house{
+    color: black
+}
+.navBar ul > li{
+    list-style-type: none;
+}
