@@ -20,3 +20,11 @@
 .form input {
     border-radius: 5px;
 }
+.demoUserButt{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -9px;
+    margin-bottom: 5px;
+}
