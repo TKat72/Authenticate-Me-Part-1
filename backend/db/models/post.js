@@ -41,5 +41,11 @@ module.exports = (sequelize, DataTypes) => {
   Post.getAllPosts = async function () {
     return await Post.findAll();
   }
+  Post.createPost = async function ({ userId, title, imgUrl, context, availability }) {
+
+    return await Post.create({ userId, title, imgUrl, context, availability })
+  }
+
+
   return Post;
 };
