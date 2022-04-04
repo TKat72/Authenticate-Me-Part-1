@@ -51,3 +51,29 @@ fetch('/api/users', {
     password: ''
   })
 }).then(res => res.json()).then(data => console.log(data));
+
+
+create table for post
+
+npx sequelize model:generate --name Post --attributes userId:integer,title:string,imgUrl:string,context:string,availability:integer
+npx dotenv sequelize db:migrate
+
+generet post data
+ npx sequelize seed:generate --name posts-data
+
+
+test for create
+fetch('/api/posts/new', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `341OmZA6-dnAxYotycAkSjB0lq6wTAhKzOs8`
+  },
+  body: JSON.stringify({
+    userId:1,
+     title:"test from browser",
+     imgUrl:"no)))",
+      context:" this is context",
+      availability: 2
+  })
+}).then(res => res.json()).then(data => console.log(data));
