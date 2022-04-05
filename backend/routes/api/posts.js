@@ -12,10 +12,11 @@ const validatePost = [
     check('title')
         .exists({ checkFalsy: true })
         .isLength({ min: 4 })
-        .withMessage("Please provide Title with at least 4 chracters"),
-    check("context")
+        .withMessage('Please provide Title with at least 4 chracters'),
+    check('context')
         .exists({ checkFalsy: true })
-        .withMessage("Plaase provide some information about your post"),
+        .isLength({ min: 5 })
+        .withMessage('Plaase provide some information about your post'),
     handleValidationErrors
 ]
 
@@ -43,7 +44,7 @@ router.get("/test", asyncHandler(async (req, res) => {
     console.log(test)
     res.json({ test })
 }))
-router.post('/new', asyncHandler(async (req, res) => {
+router.post('/new', validatePost, asyncHandler(async (req, res) => {
     const { userId, title, imgUrl, context, availability } = req.body;
 
     const post = await Post.createPost({ userId, title, imgUrl, context, availability })
@@ -60,7 +61,18 @@ router.delete('/:postId(\\d+)', asyncHandler(async (req, res) => {
     res.json({ message: "Success!!!" })
 }))
 
-router.patch('/')
+router.patch('/:postId(\\d+)', validatePost, asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.postId, 10);
+    const { userId, title, imgUrl, context, availability } = req.body;
+    console.log(id, " post id ")
+    const result = await Post.findByPk(id);
+    console.log(result)
+
+    const updated = await result.update({ userId, title, imgUrl, context, availability })
+
+    res.json({ updated })
+
+}))
 
 
 

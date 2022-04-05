@@ -31,6 +31,8 @@ function Navigation({ isLoaded }) {
             <ul >
                 <li>
                     <NavLink exact to="/" className='homeLink'><i className="fa-solid fa-house"></i></NavLink>
+                    <NavLink to="/posts">posts</NavLink>
+                    <NavLink to="/edit">editForm</NavLink>
                     {isLoaded && sessionLinks}
                 </li>
             </ul>
