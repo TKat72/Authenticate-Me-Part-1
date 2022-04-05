@@ -13,7 +13,11 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <ProfileButton user={sessionUser} />
+                <NavLink to='/new'> add New post</NavLink>
+                <NavLink to="/posts">posts</NavLink>
+            </>
         );
     } else {
         sessionLinks = (
@@ -31,8 +35,8 @@ function Navigation({ isLoaded }) {
             <ul >
                 <li>
                     <NavLink exact to="/" className='homeLink'><i className="fa-solid fa-house"></i></NavLink>
-                    <NavLink to="/posts">posts</NavLink>
-                    <NavLink to="/edit">editForm</NavLink>
+
+
                     {isLoaded && sessionLinks}
                 </li>
             </ul>

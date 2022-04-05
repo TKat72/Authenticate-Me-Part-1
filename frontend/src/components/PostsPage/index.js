@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Switch, Route } from "react-router-dom"
+import { NavLink, Switch, Route, Redirect } from "react-router-dom"
 import PostEditForm from "../PostEdit/PostEditForm";
 import * as postActions from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
@@ -7,16 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function PostsPage() {
     const dispatch = useDispatch();
+
     const result = useSelector(state => {
         return state.post
     })
     const posts = Object.values(result)
     // posts.map(ele => console.log(ele))
-    useEffect(() => {
+    const postId =
+        useEffect(() => {
 
-        dispatch(postActions.getAll())
+            dispatch(postActions.getAll())
 
-    }, [dispatch])
+        }, [dispatch])
     // userId, title, imgUrl, context, availability
 
     return (
@@ -25,16 +27,16 @@ export default function PostsPage() {
             <ul>
                 {posts.map(post => (
 
-                    <li key={post.id}>
-                        <h2>{post.title}</h2>
+                    <li key={post?.id}>
+                        <h2>{post?.title}</h2>
                         <img
                             src={post?.imgUrl}
                             alt={post?.title}
                             style={{ height: "200px", borderRadius: "10px", boxShadow: "" }}
                         />
-                        <p>{post.context}</p>
-                        <p>{post.availability}</p>
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <p>{post?.context}</p>
+                        <p>{post?.availability}</p>
+                        <NavLink to={`/posts/${post?.id}/edit`} key={post.id}><button><i class="fa-solid fa-pen-to-square"></i></button></NavLink>
                         <button><i class="fa-solid fa-trash-can"></i></button>
                     </li>
 

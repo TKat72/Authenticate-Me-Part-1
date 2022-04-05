@@ -36,13 +36,39 @@ export const getAll = () => async (dispatch) => {
     }
 
 }
+export const createNewPost = ({ userId, title, imgUrl, context, availability }) => async (dispatch) => {
+
+    const response = await csrfFetch('/api/posts/new', {
+        method: "POST",
+        body: JSON.stringify({
+            userId,
+            title,
+            imgUrl,
+            context,
+            availability
+        }),
+    });
+    const data = await response.json();
+    dispatch(addPost(data.post))
+    return response;
+}
+
+export const removePost = (id) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/posts/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch(deletePost);
+    return response;
+
+}
 
 const initialState = {}
 
 const postReducer = (state = initialState, action) => {
 
     let newState;
-    let newEnty;
+
     switch (action.type) {
         case ADD_POST:
             newState = Object.assign({}, state);

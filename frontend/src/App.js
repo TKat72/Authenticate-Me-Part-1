@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation";
 import { Switch, Route } from "react-router-dom";
 import PostsPage from './components/PostsPage'
 import PostEditForm from "./components/PostEdit/PostEditForm";
-
+import AddNewPost from "./components/AddNewPost"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,8 +20,11 @@ function App() {
         <Route path="/posts">
           <PostsPage></PostsPage>
         </Route>
-        <Route path='posts/:postId/edit'>
+        <Route path='/posts/:postId/edit'>
           <PostEditForm />
+        </Route>
+        <Route path="/new">
+          <AddNewPost></AddNewPost>
         </Route>
       </Switch>
 
