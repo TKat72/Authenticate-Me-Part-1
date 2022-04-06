@@ -6,6 +6,8 @@ import { Switch, Route } from "react-router-dom";
 import PostsPage from './components/PostsPage'
 import PostEditForm from "./components/PostEdit/PostEditForm";
 import AddNewPost from "./components/AddNewPost"
+import DeleteForm from "./components/DeleteFile/DeleteForm";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,6 +27,10 @@ function App() {
         </Route>
         <Route path="/new">
           <AddNewPost></AddNewPost>
+        </Route>
+
+        <Route  path='/posts/:postId/delete'>
+          <DeleteForm></DeleteForm>
         </Route>
       </Switch>
 

@@ -1,31 +1,40 @@
 .navBar{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    width:80rem;
+
+
+
+
     border-radius: 10px;
     border: 0.1rem solid gray;
     box-shadow: rgba(226, 224, 224, 0.815) 0px 5px 15px;
-   background-color: #f6f4e8;
+   background-color: #DAB88B;
+   background-image: linear-gradient(135deg, rgba(52, 152, 219,0.5) 0%,rgba(243, 65, 65, 0.4) 100%), url("http://i.imgbox.com/LmWSE419.jpg");
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: fixed;
+   background-size: cover;
 
 }
-.navBar .homeLink{
+.ulNav{
+    display: flex;
+    justify-content: space-between;
 
-    margin-right: 1035px;
 }
+
  .navBar .loginButt{
      margin: 5px;
      margin-right: 18px;
      border-radius: 5px;
      background-color: #e59560;
+
  }
  .navBar .signInButt{
     margin: 5px;
     margin-right: 18px;
     border-radius: 5px;
-    background-color: #1d3124;
-    color: white;
+    background-color: #111312;
+    color: rgb(145, 138, 138);
+
+
  }
 .fa-house{
     color: black

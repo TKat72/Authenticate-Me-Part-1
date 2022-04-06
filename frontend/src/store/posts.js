@@ -20,10 +20,11 @@ const addPost = (post) => {
 }
 
 
-const deletePost = () => {
+const deletePost = (id) => {
+
     return {
         type: DELETE_POST,
-
+        id
     }
 }
 
@@ -58,7 +59,7 @@ export const removePost = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/posts/${id}`, {
         method: 'DELETE'
     })
-    dispatch(deletePost);
+    dispatch(deletePost(id));
     return response;
 
 }
@@ -68,7 +69,7 @@ const initialState = {}
 const postReducer = (state = initialState, action) => {
 
     let newState;
-
+    console.log("action payloud ", action)
     switch (action.type) {
         case ADD_POST:
             newState = Object.assign({}, state);
@@ -76,7 +77,8 @@ const postReducer = (state = initialState, action) => {
             return newState;
         case DELETE_POST:
             newState = Object.assign({}, state);
-            newState.post = null;
+            delete newState[action.id]
+
             return newState;
         case GET_ALL_POSTS:
             newState = { ...state };

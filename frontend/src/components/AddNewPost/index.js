@@ -22,16 +22,17 @@ export default function AddNewPost() {
     const onSubmit = (e) => {
         e.preventDefault();
         const userId = result.id
-        history.push('/posts')
-        return dispatch(postAction.createNewPost({ userId, title, imgUrl, context, availability })).catch(async (res) => {
+
+        dispatch(postAction.createNewPost({ userId, title, imgUrl, context, availability })).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors)
         })
+        history.push('/posts')
     }
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="formSignUp">
                 <label>Title</label>
                 <input
                     onChange={e => setTitle(e.target.value)}
