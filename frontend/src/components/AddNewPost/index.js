@@ -33,6 +33,9 @@ export default function AddNewPost() {
     return (
         <>
             <form onSubmit={onSubmit} className="formSignUp">
+                <ul>
+                    {errors.map((err, inx) => <li key={inx}>{err}</li>)}
+                </ul>
                 <label>Title</label>
                 <input
                     onChange={e => setTitle(e.target.value)}

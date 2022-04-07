@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PostEditForm from '../PostEdit/PostEditForm';
 import './SignupForm.css'
 
 
@@ -42,42 +43,45 @@ export default function SignupFormPage() {
 
 
     return (
-        <div className='formWparer'>
-            <form onSubmit={onSubmit} className="formSignUp">
-                <ul>
-                    {errors.map((err, inx) => <li key={inx}>{err}</li>)}
-                </ul>
-                <label>User Name</label>
-                <div>
-                    <i className="fa-solid fa-user"></i> <input
-                        onChange={e => setUserName(e.target.value)}
-                        value={username}
-                    />
-                </div>
-                <label>Email</label>
-                <div>
-                    <i className="fa-solid fa-envelope"></i> <input
-                        onChange={e => setEmail(e.target.value)}
-                        value={email}
-                    />
-                </div>
-                <label>Password</label>
-                <div>
-                    <i className="fa-solid fa-lock"></i> <input
-                        type="password"
-                        onChange={e => setPassword(e.target.value)}
-                        value={password} />
-                </div>
-                <label>Confurm Password</label>
-                <div>
-                    <i className="fa-solid fa-lock"></i> <input
-                        type="password"
-                        onChange={e => setConfPassword(e.target.value)}
-                        value={confPassword} />
-                </div>
-                <button> Sugn Up</button>
-            </form>
-        </div>
+        <>
+            <div className='formWparer'>
+                <form onSubmit={onSubmit} className="formSignUp">
+                    <ul>
+                        {errors.map((err, inx) => <li key={inx}>{err}</li>)}
+                    </ul>
+                    <label>User Name</label>
+                    <div>
+                        <i className="fa-solid fa-user"></i> <input
+                            onChange={e => setUserName(e.target.value)}
+                            value={username}
+                        />
+                    </div>
+                    <label>Email</label>
+                    <div>
+                        <i className="fa-solid fa-envelope"></i> <input
+                            onChange={e => setEmail(e.target.value)}
+                            value={email}
+                        />
+                    </div>
+                    <label>Password</label>
+                    <div>
+                        <i className="fa-solid fa-lock"></i> <input
+                            type="password"
+                            onChange={e => setPassword(e.target.value)}
+                            value={password} />
+                    </div>
+                    <label>Confurm Password</label>
+                    <div>
+                        <i className="fa-solid fa-lock"></i> <input
+                            type="password"
+                            onChange={e => setConfPassword(e.target.value)}
+                            value={confPassword} />
+                    </div>
+                    <button> Sugn Up</button>
+                </form>
+            </div>
+
+        </>
     )
 
 

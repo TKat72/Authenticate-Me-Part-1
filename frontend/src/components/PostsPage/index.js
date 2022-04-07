@@ -34,7 +34,7 @@ export default function PostsPage() {
                     <li className="postCard" style={{ width: "100%", width: "300px" }}
                         key={post?.id}>
                         <h2>{post?.title}
-                            <button><i className="fa-solid fa-pen-to-square"></i></button>
+                            <NavLink to={`/posts/${post.id}/edit`} > <i className="fa-solid fa-pen-to-square"></i></NavLink>
 
                             <button onClick={() => setShowModal(true)} >Delete</button>
                             {showModal && (
@@ -57,7 +57,11 @@ export default function PostsPage() {
                 ))}
 
             </ul>
-
+            <Switch>
+                <Route path={`/posts/:postId/edit`}>
+                    <PostEditForm posts={posts}></PostEditForm>
+                </Route>
+            </Switch>
         </>
     )
 
