@@ -2,7 +2,12 @@
 body{
     background-color: #B7CADB;
 }
-
+footer{
+    position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;
+}
 
 #luna {
     width: 6em;
@@ -31,10 +36,10 @@ body{
     /* -webkit-animation: sprite-animation 1.2s steps(11,end) infinite;
     -moz-animation: sprite-animation 1.2s steps(11,end) infinite;
     -ms-animation: sprite-animation 1.2s steps(11,end) infinite; */
-    animation: sprite-animation 1.2s steps(16,end) infinite;
+    animation: kat-animation 1.2s steps(16,end) infinite;
     }
 
-@keyframes sprite-animation {
+@keyframes kat-animation {
         from { background-position: 0 0; }
         to { background-position: -8120px 0; }
     }
