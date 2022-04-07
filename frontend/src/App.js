@@ -7,6 +7,7 @@ import PostsPage from './components/PostsPage'
 import PostEditForm from "./components/PostEdit/PostEditForm";
 import AddNewPost from "./components/AddNewPost"
 import DeleteForm from "./components/DeleteFile/DeleteForm";
+import PostInfo from "./components/PostInformation";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,9 +30,10 @@ function App() {
           <AddNewPost></AddNewPost>
         </Route>
 
-        <Route  path='/posts/:postId/delete'>
+        <Route path='/posts/:postId/delete'>
           <DeleteForm></DeleteForm>
         </Route>
+
       </Switch>
 
     </>

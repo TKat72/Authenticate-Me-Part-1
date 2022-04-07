@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import DeleteForm from "../DeleteFile/DeleteForm";
 import './PostPage.css'
+import PostInfo from "../PostInformation";
+import { ModalForDitals } from "../../context/ModelForDitals";
+
 
 export default function PostsPage() {
     const history = useHistory();
@@ -31,35 +34,40 @@ export default function PostsPage() {
             <ul className="postsContainer">
                 {posts.map(post => (
 
-                    <li className="postCard" style={{ width: "100%", width: "300px" }}
-                        key={post?.id}>
-                        <h2>{post?.title}
-                            <NavLink to={`/posts/${post.id}/edit`} > <i className="fa-solid fa-pen-to-square"></i></NavLink>
+                    <NavLink to={`/posts/${post.id}`} className="linkForDitals" >
 
-                            <button onClick={() => setShowModal(true)} >Delete</button>
-                            {showModal && (
-                                <Modal onClose={() => setShowModal(false)}>
-                                    <DeleteForm post={post}></DeleteForm>
-                                </Modal>
-                            )}</h2>
-                        <img
-                            src={post?.imgUrl}
-                            alt={post?.title}
-                            style={{ height: "200px", borderRadius: "10px", boxShadow: "", width: "280px", margin: "9px" }}
-                        />
-                        <p>{post?.context}</p>
-                        <p>{post?.availability}</p>
+                        <li className="postCard" style={{ width: "100%", width: "300px" }}
+                            key={post?.id}>
+                            <h2>{post?.title}
+                                <NavLink to={`/posts/${post.id}/edit`} > <i className="fa-solid fa-pen-to-square"></i></NavLink>
+
+                                <button onClick={() => setShowModal(true)} >Delete</button>
+                                {showModal && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <DeleteForm post={post}></DeleteForm>
+                                    </Modal>
+                                )}</h2>
+                            <img
+                                src={post?.imgUrl}
+                                alt={post?.title}
+                                style={{ height: "200px", borderRadius: "10px", boxShadow: "", width: "280px", margin: "9px" }}
+                            />
+                            <p>{post?.context}</p>
+                            <p>{post?.availability}</p>
 
 
 
-                    </li>
-
+                        </li>
+                    </NavLink>
                 ))}
 
             </ul>
             <Switch>
                 <Route path={`/posts/:postId/edit`}>
                     <PostEditForm posts={posts}></PostEditForm>
+                </Route>
+                <Route path={`/posts/:postId`}>
+                    <PostInfo posts={posts}></PostInfo>
                 </Route>
             </Switch>
         </>
