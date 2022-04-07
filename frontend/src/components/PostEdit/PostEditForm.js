@@ -4,11 +4,11 @@ import { useHistory, useParams } from "react-router-dom";
 import * as postAction from "../../store/posts"
 
 
-export default function PostEditForm({ posts }) {
+export default function PostEditForm({ post }) {
 
     const { postId } = useParams()
 
-    const post = posts.find(ele => ele.id === parseInt(postId))
+
     const history = useHistory()
     const dispatch = useDispatch();
     const [title, setTitle] = useState(post.title);
@@ -23,14 +23,14 @@ export default function PostEditForm({ posts }) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const post = {
+        const post1 = {
             title,
             imgUrl,
             context,
             availability
         }
 
-        dispatch(postAction.updatePost(postId, post)).catch(async (res) => {
+        dispatch(postAction.updatePost(post.id, post1)).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors)
         })

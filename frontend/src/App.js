@@ -5,9 +5,10 @@ import Navigation from "./components/Navigation";
 import { Switch, Route } from "react-router-dom";
 import PostsPage from './components/PostsPage'
 import PostEditForm from "./components/PostEdit/PostEditForm";
-import AddNewPost from "./components/AddNewPost"
+import AddNewPost from "./components/AddNewPost/AddNewPost"
 import DeleteForm from "./components/DeleteFile/DeleteForm";
 import PostInfo from "./components/PostInformation";
+import Splash from "./components/Splash/Splash";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,16 +24,20 @@ function App() {
         <Route path="/posts">
           <PostsPage></PostsPage>
         </Route>
-        <Route path='/posts/:postId/edit'>
+        <Route exact path='/posts/:postId/edit'>
           <PostEditForm />
         </Route>
-        <Route path="/new">
+        <Route exact path="/posts/new">
           <AddNewPost></AddNewPost>
         </Route>
 
-        <Route path='/posts/:postId/delete'>
+        <Route exact path='/posts/:postId/delete'>
           <DeleteForm></DeleteForm>
+        </Route >
+        <Route exact path={`/`}>
+          <Splash></Splash>
         </Route>
+
 
       </Switch>
 
