@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import './PostPage.css'
 
 import PostDeleteModal from "../DeleteFile";
-import PostEditModal from "../postEdit";
 import PostInfoModal from "../PostInformation"
+import PostEditModal from "../PostEdit";
 
 
 
