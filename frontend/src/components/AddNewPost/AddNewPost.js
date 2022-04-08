@@ -11,7 +11,7 @@ export default function AddNewPost() {
     const [imgUrl, setImgURl] = useState('');
     const [context, setContext] = useState('');
     const [availability, setAvailability] = useState('');
-    const result = useSelector(state => state.session.user)
+    const result = useSelector(state => state.session?.user)
     const [errors, setErrors] = useState([]);
 
 
@@ -21,7 +21,8 @@ export default function AddNewPost() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const userId = result.id
+        const userId = result?.id
+
 
         dispatch(postAction.createNewPost({ userId, title, imgUrl, context, availability })).catch(async (res) => {
             const data = await res.json();
@@ -30,9 +31,11 @@ export default function AddNewPost() {
         history.push('/posts')
     }
 
+
+
     return (
         <>
-            <form onSubmit={onSubmit} className="formSignUp">
+            <form onSubmit={onSubmit} >
                 <ul>
                     {errors.map((err, inx) => <li key={inx}>{err}</li>)}
                 </ul>

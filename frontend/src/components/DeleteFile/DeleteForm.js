@@ -8,21 +8,21 @@ import * as postActions from "../../store/posts"
 export default function DeleteForm({ post }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const result = useSelector(state => state.session.user)
-
+    const result = useSelector(state => state.session?.user)
 
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const userId = result.id;
+        const userId = result?.id;
+        console.log(post.userId)
         if (userId === post.userId) {
             // history.push('/posts');
             dispatch(postActions.removePost(post.id)).catch(async (res) => {
                 const data = await res.json();
             })
 
-            return history.push('/posts');
+            history.replace('/posts');
 
         }
     }

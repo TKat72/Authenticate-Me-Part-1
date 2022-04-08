@@ -15,25 +15,30 @@ export default function PostEditForm({ post }) {
     const [imgUrl, setImgURl] = useState(post.imgUrl);
     const [context, setContext] = useState(post.context);
     const [availability, setAvailability] = useState(post.availability);
-    const result = useSelector(state => state.session.user)
+
     const [errors, setErrors] = useState([]);
 
-
-
+    const result = useSelector(state => state)
+    console.log(" when colong edit page for post prop ", post)
 
     const onSubmit = (e) => {
+        console.log("in in submit ", result)
+        // const userId = result?.user?.id;
+        const id = result.post
+        console.log("edit form in on click  posy id  ", id)
         e.preventDefault();
         const post1 = {
             title,
+            // userId,
             imgUrl,
             context,
             availability
         }
-
-        dispatch(postAction.updatePost(post.id, post1)).catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors)
-        })
+        console.log(result)
+        // dispatch(postAction.updatePost(id, post1)).catch(async (res) => {
+        //     const data = await res.json();
+        //     if (data && data.errors) setErrors(data.errors)
+        // })
         history.push('/posts')
 
 

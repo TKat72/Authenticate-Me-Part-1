@@ -27,7 +27,7 @@ function App() {
         <Route exact path='/posts/:postId/edit'>
           <PostEditForm />
         </Route>
-        <Route exact path="/posts/new">
+        <Route exact path="/new">
           <AddNewPost></AddNewPost>
         </Route>
 

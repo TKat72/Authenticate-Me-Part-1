@@ -23,7 +23,7 @@ const updateOnePost = (id, post) => {
     return {
         type: UPDATE_POST,
         id,
-        post
+        payload: post
     }
 
 }
@@ -32,7 +32,7 @@ const deletePost = (id) => {
 
     return {
         type: DELETE_POST,
-        id
+        payload: id
     }
 }
 
@@ -60,6 +60,7 @@ export const updatePost = (id, post) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(updateOnePost(id, post))
+        return response;
     }
 }
 export const createNewPost = ({ userId, title, imgUrl, context, availability }) => async (dispatch) => {
@@ -74,7 +75,7 @@ export const createNewPost = ({ userId, title, imgUrl, context, availability }) 
             availability
         }),
     });
-    const data = await response.json();
+    let data = await response.json();
     dispatch(addPost(data.post))
     return response;
 }
@@ -94,17 +95,21 @@ const initialState = {}
 const postReducer = (state = initialState, action) => {
 
     let newState;
+
     console.log("action payloud ", action)
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
+            let post = action.payload
             newState = Object.assign({}, state);
-            newState[action.id] = action.payload;
+            newState[post.id] = post;// post{1:{post1 info},2:{post2 info}}
             return newState;
+        }
         case DELETE_POST:
             newState = Object.assign({}, state);
-            delete newState[action.id];
+            delete newState[action.payload];
             return newState;
         case GET_ALL_POSTS:
+            // newState = {}
             newState = { ...state };
             action.payload.forEach((post) => {
                 newState[post.id] = post;
@@ -117,7 +122,7 @@ const postReducer = (state = initialState, action) => {
             };
         case UPDATE_POST:
             newState = { ...state };
-            newState[action.id] = action.post;
+            newState[action.id] = action.payload;
             return newState;
         default:
             return state;
