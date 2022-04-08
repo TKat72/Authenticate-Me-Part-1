@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as postAction from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 export default function PostEditFrom({ id, post, setShowModal }) {
@@ -17,8 +17,18 @@ export default function PostEditFrom({ id, post, setShowModal }) {
     const postId = post.id;
 
 
+    useEffect(() => {
+        let errors = [];
+        if (title.length < 3) {
+            errors.push("Please enter title");
+        }
 
-    // const id = result.user.id;
+        if (context.length < 4) {
+            errors.push("Provide some context");
+        }
+        setErrors(errors);
+    }, [title, context])
+
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -32,12 +42,12 @@ export default function PostEditFrom({ id, post, setShowModal }) {
             availability
         }
 
-        dispatch(postAction.updatePost({ id, post })).catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors)
-        })
-        setShowModal(false)
-        history.push('/posts')
+        dispatch(postAction.updatePost({ id, post }))
+        if (!errors.length) {
+            setShowModal(false)
+            history.push('/posts')
+        }
+
     }
 
     return (
@@ -62,7 +72,7 @@ export default function PostEditFrom({ id, post, setShowModal }) {
                     onChange={e => setContext(e.target.value)}
                     value={context}></textarea>
                 <label>Availability</label>
-                <input
+                <input type="number"
                     onChange={e => setAvailability(e.target.value)}
                     value={availability}></input>
                 <button >Submit</button>

@@ -46,7 +46,7 @@ export const getAll = () => async (dispatch) => {
 
 }
 export const updatePost = ({ id, post }) => async (dispatch) => {
-    const { userid,title, imgUrl, context, availability } = post;
+    const { title, imgUrl, context, availability } = post;
     const response = await csrfFetch(`/api/posts/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({
@@ -58,7 +58,7 @@ export const updatePost = ({ id, post }) => async (dispatch) => {
 
     })
     if (response.ok) {
-        const data = await response.json()
+        // const data = await response.json()
         dispatch(updateOnePost(id, post))
         return response;
     }
@@ -81,7 +81,7 @@ export const createNewPost = ({ userId, title, imgUrl, context, availability }) 
 }
 
 export const removePost = (id) => async (dispatch) => {
-   
+
     const response = await csrfFetch(`/api/posts/${id}`, {
         method: 'DELETE'
     })
