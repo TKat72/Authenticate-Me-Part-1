@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import PostDeleteModal from "../DeleteFile";
-import PostEditModal from "../postEdit";
+import PostEditModal from "../postEdit/index.js";
 import "./PostInfo.css"
 
 export default function PostInfo({ id, post }) {
