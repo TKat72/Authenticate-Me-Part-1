@@ -4,7 +4,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { Switch, Route } from "react-router-dom";
 import PostsPage from './components/PostsPage'
-import PostEditForm from "./components/PostEdit/PostEditForm";
+
 import AddNewPost from "./components/AddNewPost/AddNewPost"
 import DeleteForm from "./components/DeleteFile/DeleteForm";
 import PostInfo from "./components/PostInformation";
@@ -24,9 +24,7 @@ function App() {
         <Route path="/posts">
           <PostsPage></PostsPage>
         </Route>
-        <Route exact path='/posts/:postId/edit'>
-          <PostEditForm />
-        </Route>
+
         <Route exact path="/new">
           <AddNewPost></AddNewPost>
         </Route>

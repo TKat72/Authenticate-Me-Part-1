@@ -1,9 +1,9 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom"
 import * as postActions from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
 import './PostPage.css'
-import PostEditModal from "../PostEdit";
+
 import PostDeleteModal from "../DeleteFile";
 
 
@@ -38,13 +38,9 @@ export default function PostsPage() {
                     <li className="postCard" style={{ width: "300px", }}
                         key={post?.id}>
                         <h2>{post?.title}
-                            {userId === post.userId && (
+                            {userId === post?.userId && (
                                 <>
-                                    <> <PostEditModal post={post}><NavLink to={`/posts/${post?.id}/edit`} key={`post-${post?.id}`} id={`post${post?.id}`}> <i className="fa-solid fa-pen-to-square"></i></NavLink></PostEditModal>
-                                    </>
-
-                                    <> <PostDeleteModal post={post}><NavLink to={`/post/${post.id}/delete`}></NavLink></PostDeleteModal>
-                                    </>
+                                    <PostDeleteModal post={post}><NavLink to={`/post/${post.id}/delete`}></NavLink></PostDeleteModal>
                                 </>
                             )}
 

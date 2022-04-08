@@ -45,7 +45,7 @@ export const getAll = () => async (dispatch) => {
     }
 
 }
-export const updatePost = (id, post) => async (dispatch) => {
+export const updatePost = ({ id, post }) => async (dispatch) => {
     const { title, imgUrl, context, availability } = post;
     const response = await csrfFetch(`/api/posts/${id}`, {
         method: 'PATCH',
@@ -120,10 +120,12 @@ const postReducer = (state = initialState, action) => {
                 ...state,
 
             };
-        case UPDATE_POST:
+        case UPDATE_POST: {
+            let post = action.payload
             newState = { ...state };
-            newState[action.id] = action.payload;
+            newState[action.id] = post;
             return newState;
+        }
         default:
             return state;
     }

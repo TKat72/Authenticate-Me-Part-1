@@ -1,55 +1,39 @@
 import React, { useEffect, useState } from "react";
+import * as postAction from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import * as postAction from "../../store/posts"
 
 
-export default function PostEditForm({ post }) {
-
-    const { postId } = useParams()
-
-
+export default function PostEditFrom({ id, post }) {
     const history = useHistory()
     const dispatch = useDispatch();
-    const [title, setTitle] = useState(post.title);
-    const [imgUrl, setImgURl] = useState(post.imgUrl);
-    const [context, setContext] = useState(post.context);
-    const [availability, setAvailability] = useState(post.availability);
-
+    const [title, setTitle] = useState('');
+    const [imgUrl, setImgURl] = useState('');
+    const [context, setContext] = useState('');
+    const [availability, setAvailability] = useState('');
+    const result = useSelector(state => state.session?.user)
     const [errors, setErrors] = useState([]);
 
-    const result = useSelector(state => state)
-    console.log(" when colong edit page for post prop ", post)
+
+
+
+    // const id = result.user.id;
 
     const onSubmit = (e) => {
-        console.log("in in submit ", result)
-        // const userId = result?.user?.id;
-        const id = result.post
-        console.log("edit form in on click  posy id  ", id)
         e.preventDefault();
-        const post1 = {
-            title,
-            // userId,
-            imgUrl,
-            context,
-            availability
-        }
-        console.log(result)
-        // dispatch(postAction.updatePost(id, post1)).catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) setErrors(data.errors)
-        // })
+        const userId = result?.id
+
+
+        dispatch(postAction.updatePost({ id, post })).catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors)
+        })
         history.push('/posts')
-
-
     }
-
 
     return (
         <>
-
-            <form className="formSignUp" onSubmit={onSubmit}>
-                <h1>Edit Form</h1>
+            <form onSubmit={onSubmit} >
                 <ul>
                     {errors.map((err, inx) => <li key={inx}>{err}</li>)}
                 </ul>
