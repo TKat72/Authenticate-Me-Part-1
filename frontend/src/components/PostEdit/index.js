@@ -9,7 +9,7 @@ function PostEditModal({ id, post }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)} className="signInButt">Delete</button>
+            <button onClick={() => setShowModal(true)} className="signInButt"><i className="fa-solid fa-pen-to-square"></i></button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <PostEditFrom post={post} id={id}></PostEditFrom>

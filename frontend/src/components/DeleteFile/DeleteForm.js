@@ -15,7 +15,7 @@ export default function DeleteForm({ post }) {
         e.preventDefault();
 
         const userId = result?.id;
-        console.log(post.userId)
+       
         if (userId === post.userId) {
             // history.push('/posts');
             dispatch(postActions.removePost(post.id)).catch(async (res) => {

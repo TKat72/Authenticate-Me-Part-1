@@ -7,14 +7,14 @@ import { useHistory, useParams } from "react-router-dom";
 export default function PostEditFrom({ id, post }) {
     const history = useHistory()
     const dispatch = useDispatch();
-    const [title, setTitle] = useState('');
-    const [imgUrl, setImgURl] = useState('');
-    const [context, setContext] = useState('');
-    const [availability, setAvailability] = useState('');
+    const [title, setTitle] = useState(post.title);
+    const [imgUrl, setImgURl] = useState(post.imgUrl);
+    const [context, setContext] = useState(post.context);
+    const [availability, setAvailability] = useState(post.availability);
     const result = useSelector(state => state.session?.user)
     const [errors, setErrors] = useState([]);
 
-
+    
 
 
     // const id = result.user.id;
@@ -22,7 +22,13 @@ export default function PostEditFrom({ id, post }) {
     const onSubmit = (e) => {
         e.preventDefault();
         const userId = result?.id
-
+        const post = {
+            userId,
+            title,
+            imgUrl,
+            context,
+            availability
+        }
 
         dispatch(postAction.updatePost({ id, post })).catch(async (res) => {
             const data = await res.json();

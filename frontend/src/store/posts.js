@@ -96,7 +96,7 @@ const postReducer = (state = initialState, action) => {
 
     let newState;
 
-    console.log("action payloud ", action)
+
     switch (action.type) {
         case ADD_POST: {
             let post = action.payload

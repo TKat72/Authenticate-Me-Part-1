@@ -8,7 +8,7 @@ import './Splash.css'
 
 export default function Splash() {
     const user = useSelector(state => state.session?.user)
-    console.log(user)
+   
     return (
         <>
             <div className="splashPage">

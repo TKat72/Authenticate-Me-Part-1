@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import './PostPage.css'
 
 import PostDeleteModal from "../DeleteFile";
-
+import PostEditModal from "../postEdit/index.js";
+import PostInfoModal from "../PostInformation/index.js"
 
 
 
@@ -17,7 +18,7 @@ export default function PostsPage() {
 
     const posts = Object.values(state.post)
     const userId = state.session.user?.id;
-    console.log()
+
     useEffect(() => {
 
         dispatch(postActions.getAll())
@@ -37,9 +38,12 @@ export default function PostsPage() {
 
                     <li className="postCard" style={{ width: "300px", }}
                         key={post?.id}>
-                        <h2>{post?.title}
+                        <h2>
+                            {post?.title}
+                            <PostInfoModal id={post.id} post={post}></PostInfoModal>
                             {userId === post?.userId && (
                                 <>
+                                    <PostEditModal post={post} id={post.id}><NavLink to={`/posts/${post.id}/edit`}></NavLink></PostEditModal>
                                     <PostDeleteModal post={post}><NavLink to={`/post/${post.id}/delete`}></NavLink></PostDeleteModal>
                                 </>
                             )}

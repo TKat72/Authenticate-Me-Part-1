@@ -7,7 +7,7 @@ import PostsPage from './components/PostsPage'
 
 import AddNewPost from "./components/AddNewPost/AddNewPost"
 import DeleteForm from "./components/DeleteFile/DeleteForm";
-import PostInfo from "./components/PostInformation";
+import PostInfo from "./components/PostInformation/PostInfo";
 import Splash from "./components/Splash/Splash";
 
 function App() {
@@ -28,7 +28,9 @@ function App() {
         <Route exact path="/new">
           <AddNewPost></AddNewPost>
         </Route>
-
+        <Route path={`/posts/:postId`}>
+          <PostInfo></PostInfo>
+        </Route>
         <Route exact path='/posts/:postId/delete'>
           <DeleteForm></DeleteForm>
         </Route >
