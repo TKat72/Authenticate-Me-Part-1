@@ -58,7 +58,7 @@ export const updatePost = ({ id, post }) => async (dispatch) => {
 
     })
     if (response.ok) {
-        const data = await response.json()
+        // const data = await response.json()
         dispatch(updateOnePost(id, post))
         return response;
     }
