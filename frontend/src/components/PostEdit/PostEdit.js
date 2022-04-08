@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 
-export default function PostEditFrom({ id, post }) {
+export default function PostEditFrom({ id, post, setShowModal }) {
     const history = useHistory()
     const dispatch = useDispatch();
     const [title, setTitle] = useState(post.title);
@@ -14,7 +14,8 @@ export default function PostEditFrom({ id, post }) {
     const result = useSelector(state => state.session?.user)
     const [errors, setErrors] = useState([]);
 
-    
+    const postId = post.id;
+
 
 
     // const id = result.user.id;
@@ -23,6 +24,7 @@ export default function PostEditFrom({ id, post }) {
         e.preventDefault();
         const userId = result?.id
         const post = {
+            id: postId,
             userId,
             title,
             imgUrl,
@@ -34,6 +36,7 @@ export default function PostEditFrom({ id, post }) {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors)
         })
+        setShowModal(false)
         history.push('/posts')
     }
 
@@ -62,7 +65,7 @@ export default function PostEditFrom({ id, post }) {
                 <input
                     onChange={e => setAvailability(e.target.value)}
                     value={availability}></input>
-                <button>Submit</button>
+                <button >Submit</button>
             </form>
         </>
     )

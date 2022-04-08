@@ -106,3 +106,42 @@ fetch('/api/posts/7', {
       availability: 4
   })
 }).then(res => res.json()).then(data => console.log(data));
+
+
+
+npx sequelize model:generate --name Registration --attributes userId:integer,postId:integer,name:string,email:string,phone:string
+
+
+npx sequelize seed:generate --name registration-data
+
+
+npx dotenv sequelize db:drop
+
+npx dotenv sequelize db:create
+
+npx dotenv sequelize db:migrate
+
+npx dotenv sequelize db:seed:all
+
+
+create regester
+
+
+fetch('/api/posts/new', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `341OmZA6-dnAxYotycAkSjB0lq6wTAhKzOs8`
+  },
+  body: JSON.stringify({
+    userId:2,
+    postId: 2
+    name:"Blue",
+    email:"blue@blue.com",
+    phone: "765-098-7654"
+  })
+}).then(res => res.json()).then(data => console.log(data));
+
+
+heroku restart && heroku pg:reset DATABASE --confirm givein1
+&& heroku run npm run sequelize db:migrate && heroku run npm run sequelize db:seed:all

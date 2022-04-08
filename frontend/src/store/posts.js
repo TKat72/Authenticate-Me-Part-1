@@ -81,7 +81,7 @@ export const createNewPost = ({ userId, title, imgUrl, context, availability }) 
 }
 
 export const removePost = (id) => async (dispatch) => {
-
+    console.log("in fatch:", id)
     const response = await csrfFetch(`/api/posts/${id}`, {
         method: 'DELETE'
     })
