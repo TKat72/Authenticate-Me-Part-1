@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import PostDeleteModal from "../DeleteFile";
-import PostEditModal from "../postEdit/index.js";
+// import PostEditModal from "../postEdit/index.js";
 import "./PostInfo.css"
 
 export default function PostInfo({ id, post }) {
@@ -14,7 +14,7 @@ export default function PostInfo({ id, post }) {
         <>
             <div className="infoCard">
                 <h2>{post?.title}
-                    <PostEditModal post={post} id={post.id}></PostEditModal>
+                    {/* <PostEditModal post={post} id={post.id}></PostEditModal> */}
                     <PostDeleteModal post={post}></PostDeleteModal>
                 </h2>
                 <img
