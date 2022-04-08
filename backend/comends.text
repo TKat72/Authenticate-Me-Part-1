@@ -145,3 +145,6 @@ fetch('/api/posts/new', {
 
 heroku restart && heroku pg:reset DATABASE --confirm givein1
 && heroku run npm run sequelize db:migrate && heroku run npm run sequelize db:seed:all
+
+
+ git push heroku frontend2:master

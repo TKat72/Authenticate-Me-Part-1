@@ -46,7 +46,7 @@ export const getAll = () => async (dispatch) => {
 
 }
 export const updatePost = ({ id, post }) => async (dispatch) => {
-    const { title, imgUrl, context, availability } = post;
+    const { userid,title, imgUrl, context, availability } = post;
     const response = await csrfFetch(`/api/posts/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({
