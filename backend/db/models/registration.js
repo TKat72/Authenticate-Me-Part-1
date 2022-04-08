@@ -50,10 +50,11 @@ module.exports = (sequelize, DataTypes) => {
     const result = await Registration.findByPk(id)
     return await result.destroy();
   }
-  Registration.updateRegistration = async function (id, name, email, phone) {
+  Registration.updateRegistration = async function ({ id, name, email, phone }) {
     const result = Registration.findByPk(id)
-    return await result.update({ name, email, phone })
-
+    console.log("in update ", result);
+    const finalResult = await result.update({ name, email, phone })
+    return finalResult;
   }
   return Registration;
 };
