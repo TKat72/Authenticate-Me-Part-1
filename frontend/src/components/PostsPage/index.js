@@ -1,41 +1,64 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, Switch, Route } from "react-router-dom"
-import PostEditForm from "../PostEdit/PostEditForm";
+import React, { useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom"
 import * as postActions from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
+import './PostPage.css'
+
+import PostDeleteModal from "../DeleteFile";
+import PostInfoModal from "../PostInformation"
+import PostEditModal from "../PostEdit";
+
 
 
 export default function PostsPage() {
+    const history = useHistory();
     const dispatch = useDispatch();
-    const result = useSelector(state => {
-        return state.post
-    })
-    const posts = Object.values(result)
-    // posts.map(ele => console.log(ele))
+
+    const state = useSelector(state => state)
+
+    const posts = Object.values(state.post)
+    const userId = state.session.user?.id;
+
     useEffect(() => {
 
         dispatch(postActions.getAll())
 
     }, [dispatch])
-    // userId, title, imgUrl, context, availability
+
+
+
 
     return (
         <>
-            <div>Im here </div>
-            <ul>
+
+            <ul className="postsContainer">
                 {posts.map(post => (
 
-                    <li key={post.id}>
-                        <h2>{post.title}</h2>
+
+
+                    <li className="postCard" style={{ width: "300px", }}
+                        key={post?.id}>
+                        <h2>
+                            {post?.title}
+                            <PostInfoModal id={post.id} post={post}></PostInfoModal>
+                            {userId === post?.userId && (
+                                <>
+                                    <PostEditModal post={post} id={post.id}><NavLink to={`/posts/${post.id}/edit`}></NavLink></PostEditModal>
+                                    <PostDeleteModal post={post}><NavLink to={`/post/${post.id}/delete`}></NavLink></PostDeleteModal>
+                                </>
+                            )}
+
+                        </h2>
                         <img
                             src={post?.imgUrl}
                             alt={post?.title}
-                            style={{ height: "200px", borderRadius: "10px", boxShadow: "" }}
+                            style={{ height: "200px", borderRadius: "10px", boxShadow: "", width: "280px", margin: "9px" }}
                         />
-                        <p>{post.context}</p>
-                        <p>{post.availability}</p>
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <button><i class="fa-solid fa-trash-can"></i></button>
+                        <p>{post?.context}</p>
+                        <p>{post?.availability}</p>
+
+
+
                     </li>
 
                 ))}

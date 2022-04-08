@@ -13,11 +13,17 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <NavLink to='/new' className={`addPost`}> add New post</NavLink>
+                <NavLink to="/posts" className={`allPosts`}>posts</NavLink>
+                <ProfileButton user={sessionUser} />
+
+            </>
         );
     } else {
         sessionLinks = (
             <>
+
 
                 <LoginFormModal />
                 <SignupFormModal />
@@ -28,13 +34,14 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className='navBar'>
-            <ul >
-                <li>
+            <ul className='ulNav' >
+                <li className='liNavBar'>
                     <NavLink exact to="/" className='homeLink'><i className="fa-solid fa-house"></i></NavLink>
-                    <NavLink to="/posts">posts</NavLink>
-                    <NavLink to="/edit">editForm</NavLink>
-                    {isLoaded && sessionLinks}
+
+
+
                 </li>
+                <li> {isLoaded && sessionLinks}</li>
             </ul>
         </div >
     );

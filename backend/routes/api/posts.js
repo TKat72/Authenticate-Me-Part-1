@@ -32,18 +32,18 @@ router.get('/:postId(\\d+)', asyncHandler(async (req, res) => {
     return res.json(post)
 
 }))
-router.get("/test", asyncHandler(async (req, res) => {
-    const test = await Post.create({
-        userId: 1,
-        title: "test$$",
-        imgUrl: "https://www.freepsdbazaar.com/wp-content/uploads/2020/06/sky-replace/sky-sunset/sunset-021-freepsdbazaar.jpg",
-        context: "Somethig somthing somthing somthing",
+// router.get("/test", asyncHandler(async (req, res) => {
+//     const test = await Post.create({
+//         userId: 1,
+//         title: "test$$",
+//         imgUrl: "https://www.freepsdbazaar.com/wp-content/uploads/2020/06/sky-replace/sky-sunset/sunset-021-freepsdbazaar.jpg",
+//         context: "Somethig somthing somthing somthing",
 
-    })
+//     })
 
-    console.log(test)
-    res.json({ test })
-}))
+//     console.log(test)
+//     res.json({ test })
+// }))
 router.post('/new', validatePost, asyncHandler(async (req, res) => {
     const { userId, title, imgUrl, context, availability } = req.body;
 
