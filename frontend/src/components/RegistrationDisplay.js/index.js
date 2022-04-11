@@ -2,15 +2,15 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import * as registerAction from "../../store/registration"
 import RegisterDeleteModal from '../DeleteRegistration'
+import RegistrationEditModel from "../RegistrationEdit"
 
-
-export default function RegistrationDisplay() {
+export default function RegistrationDisplay({ id }) {
     const dispatch = useDispatch();
     const state = useSelector(state => state)
     const userId = state?.session?.user?.id;
-    console.log(userId, " user Id ")
-    console.log("this is state ", state)
-    const registations = Object.values(state.register)
+
+    const allregistations = Object.values(state.register)
+    const registations = allregistations.filter(ele => ele.postId === id)
     useEffect(() => {
         dispatch(registerAction.getAll())
 
@@ -27,7 +27,7 @@ export default function RegistrationDisplay() {
                             <p>{register?.phone}</p>
                             {userId === register.userId && (
                                 <>
-
+                                    <RegistrationEditModel id={register?.id} info={register}></RegistrationEditModel>
                                     <RegisterDeleteModal register={register}></RegisterDeleteModal>
                                 </>
                             )}

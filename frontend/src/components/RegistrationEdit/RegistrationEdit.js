@@ -1,19 +1,33 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import * as registerAction from "../../store/registration"
 
-
-export default function RegistrationEdit() {
+export default function RegistrationEdit({ id, info, setShowModal, postId }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [phone, setPhone] = useState();
+    const [name, setName] = useState(info.name);
+    const [email, setEmail] = useState(info.email);
+    const [phone, setPhone] = useState(info.phone);
+    const userId = useSelector(state => state.session.user?.id)
+    console.log(userId)
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const info = {
+            id,
+            userId: userId,
+            postId,
+            name,
+            email,
+            phone
+        }
+        dispatch(registerAction.updateRegistration({ id, info }))
+        setShowModal(false)
+    }
 
-    
 
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <label>Name</label>
             <input onChange={(e) => setName(e.target.value)}
                 value={name}

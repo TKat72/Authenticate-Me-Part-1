@@ -47,9 +47,7 @@ function App() {
         <Route exact path={'/registration/new'}>
           <AddRegistration></AddRegistration>
         </Route>
-        <Route exact path={`/edit`}>
-          <RegistrationEdit></RegistrationEdit>
-        </Route>
+
         <Route>
           <div>Page not found</div>
         </Route>

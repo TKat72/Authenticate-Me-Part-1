@@ -1,15 +1,37 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, Route, useHistory, useParams } from "react-router-dom";
 import PostDeleteModal from "../DeleteFile";
-// import PostEditModal from "../postEdit/index.js";
+import * as registerAction from "../../store/registration"
 import "./PostInfo.css"
+import AddRegistrationModel from "../AddRegistration"
+import { useDispatch, useSelector } from "react-redux";
+import RegistrationEditModel from "../RegistrationEdit";
+import RegistrationDisplay from "../RegistrationDisplay.js";
+
+
 
 export default function PostInfo({ id, post }) {
     const { postId } = useParams();
+    const dispatch = useDispatch();
+    const history = useHistory()
 
+    const state = useSelector(state => state)
+    const userId = state.session?.user?.id
+    const registrations = state?.register;
+    const result = Object.values(registrations)
+    const registationsForThisPost = result.filter(ele => ele.postId === id);
+    const alrediRegister = result.find(ele => ele.userId === userId && id === ele.postId)
+    const owner = post.userId === userId;
 
+    console.log("Owner: ", owner)
 
+    useEffect(() => {
+        dispatch(registerAction.getAll())
+    }, [dispatch])
 
+    const handelHide = () => {
+        history.push(`/posts/${id}`)
+    }
     return (
         <>
             <div className="infoCard">
@@ -24,9 +46,43 @@ export default function PostInfo({ id, post }) {
                 />
                 <p>{post?.context}</p>
                 <p>{post?.availability}</p>
-                <button>Register for Event</button>
+                {(() => {
 
+                    if (!alrediRegister && !owner) {
+
+
+
+                        return (
+
+                            <AddRegistrationModel postId={post.id}></AddRegistrationModel>
+
+                        )
+
+                    } else if (alrediRegister && !owner) {
+
+                        return (
+
+                            <RegistrationEditModel id={alrediRegister.id} info={alrediRegister} postId={id}></RegistrationEditModel>
+
+                        )
+
+                    } else if (owner) {
+
+                        return (
+                            <div>
+                                <NavLink to={`/posts/${id}/registrations`}> <button>Show registration</button> </NavLink>
+                                <button onClick={handelHide}>hide</button>
+                            </div>
+                        )
+
+                    }
+
+                })()}
+                <Route path={`/posts/${id}/registrations`}>
+                    <RegistrationDisplay id={id}></RegistrationDisplay>
+                </Route>
             </div>
+
         </>
     )
 }

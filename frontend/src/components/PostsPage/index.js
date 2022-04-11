@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom"
+// import { NavLink, useHistory } from "react-router-dom"
 import * as postActions from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
 import './PostPage.css'
@@ -11,7 +11,7 @@ import PostEditModal from "../PostEdit";
 
 
 export default function PostsPage() {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
 
     const state = useSelector(state => state)
