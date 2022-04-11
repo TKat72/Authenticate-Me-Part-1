@@ -28,7 +28,7 @@ export default function RegistrationEdit({ id, info, setShowModal, postId }) {
 
         setErrors(err)
     }, [name, email, phone])
-    console.log(errors)
+
     const onSubmit = (e) => {
         e.preventDefault();
         const info = {

@@ -52,7 +52,7 @@ export default function PostEditFrom({ id, post, setShowModal }) {
 
     return (
         <>
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} className="formSignUp" >
                 <ul>
                     {errors.map((err, inx) => <li key={inx}>{err}</li>)}
                 </ul>

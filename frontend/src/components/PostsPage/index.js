@@ -52,10 +52,10 @@ export default function PostsPage() {
                         <img
                             src={post?.imgUrl}
                             alt={post?.title}
-                            style={{ height: "200px", borderRadius: "10px", boxShadow: "", width: "280px", margin: "9px" }}
+                            style={{ height: "200px", boxShadow: "", width: "280px", margin: "9px" }}
                         />
-                        <p>{post?.context}</p>
-                        <p>{post?.availability}</p>
+                        <p className="contextDisplay">{post?.context}</p>
+
 
 
 
