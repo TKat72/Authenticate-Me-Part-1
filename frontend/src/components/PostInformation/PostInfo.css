@@ -1,6 +1,22 @@
 .infoCard{
-
+display: flex;
+flex-direction: column;
+align-items: center;
 width: 800px;
 height: 600px;
+background-color:#B7CADB;
+overflow-y: scroll;
 
+
+}
+.infoCard .contextP{
+ text-align:start;
+
+ padding:10px 70px;
+}
+.infoCard .linkForShowRegister{
+    text-decoration: none;
+}
+.infoPage{
+    background-color:#B7CADB;
 }

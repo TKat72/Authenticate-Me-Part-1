@@ -5,10 +5,10 @@ import RegistrationEdit from "./RegistrationEdit";
 
 function RegistrationEditModel({ id, info, postId }) {
     const [showModal, setShowModal] = useState(false);
-    console.log(" in midel edit : ", id)
+
     return (
         <>
-            <button onClick={() => setShowModal(true)} ><i className="fa-solid fa-pen-to-square"></i>Edit your registartion</button>
+            <button onClick={() => setShowModal(true)}> <i className="fa-solid fa-pen-to-square"></i>Edit your registartion</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <RegistrationEdit info={info} id={id} setShowModal={setShowModal} postId={postId}></RegistrationEdit>

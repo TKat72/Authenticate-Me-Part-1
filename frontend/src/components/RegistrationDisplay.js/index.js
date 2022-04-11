@@ -11,13 +11,15 @@ export default function RegistrationDisplay({ id }) {
 
     const allregistations = Object.values(state.register)
     const registations = allregistations.filter(ele => ele.postId === id)
+
     useEffect(() => {
         dispatch(registerAction.getAll())
 
     }, [dispatch])
     return (
         <>
-            <div> Im in display register</div>
+            {!registations.length ? <div> You dont have any registrations</div> : <h1>Here is ypur registrations</h1>}
+
             <ul>
                 {registations.map(register => (
                     <>

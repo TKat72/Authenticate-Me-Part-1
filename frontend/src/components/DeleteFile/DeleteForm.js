@@ -15,7 +15,7 @@ export default function DeleteForm({ post }) {
         e.preventDefault();
 
         const userId = result?.id;
-       
+
         if (userId === post.userId) {
             // history.push('/posts');
             dispatch(postActions.removePost(post.id)).catch(async (res) => {
@@ -29,9 +29,9 @@ export default function DeleteForm({ post }) {
 
     return (
         <>
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} className="deleteBox" >
                 <h2>are you shure you whant to delete your post?</h2>
-                <button>delete</button>
+                <button className="delete">delete</button>
             </form>
         </>
     )

@@ -10,12 +10,14 @@ function RegisterDeleteModal({ register }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)} className="signInButt"> Delete </button>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <DeleteRegisteration register={register}></DeleteRegisteration>
-                </Modal>
-            )}
+            <button onClick={() => setShowModal(true)} className="signInButt" style={{ width: "70px", marginTop: "-8px", marginBottom: "5px" }}> Delete </button>
+            {
+                showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <DeleteRegisteration register={register} setShowModal={setShowModal}></DeleteRegisteration>
+                    </Modal>
+                )
+            }
         </>
     );
 }

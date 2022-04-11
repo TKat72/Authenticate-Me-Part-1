@@ -5,7 +5,7 @@ import * as registrationAction from '../../store/registration'
 
 
 
-export default function DeleteRegisteration({ register }) {
+export default function DeleteRegisteration({ register, setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const result = useSelector(state => state.session?.user)
@@ -17,21 +17,21 @@ export default function DeleteRegisteration({ register }) {
         const userId = result?.id;
 
 
-        console.log("state ", state)
-        if (userId === register.userId) {
+
+        if (userId === register?.userId) {
             dispatch(registrationAction.deleteRegistration({ id: register.id }))
 
 
-            history.push('/registration');
+            setShowModal(false)
 
         }
     }
 
     return (
         <>
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} className="deleteBox" >
                 <h2>are you shure you whant to delete your registration?</h2>
-                <button>delete</button>
+                <button className="delete">delete</button>
             </form>
         </>
     )

@@ -18,8 +18,20 @@ body{
     position: absolute;
     z-index: -19;
     }
+button{
+    border-radius: 5px;
+    margin: 5px;
 
-
+}
+.delete{
+    width: 70px;
+}
+.deleteBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
 
 #gato{
     background: url('https://res.cloudinary.com/pastelitos/image/upload/v1610526571/eva/gatito_pushui.svg');
