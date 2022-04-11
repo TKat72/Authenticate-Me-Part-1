@@ -43,8 +43,8 @@ export default function PostsPage() {
                             <PostInfoModal id={post.id} post={post}></PostInfoModal>
                             {userId === post?.userId && (
                                 <>
-                                    <PostEditModal post={post} id={post.id}><NavLink to={`/posts/${post.id}/edit`}></NavLink></PostEditModal>
-                                    <PostDeleteModal post={post}><NavLink to={`/post/${post.id}/delete`}></NavLink></PostDeleteModal>
+                                    <PostEditModal post={post} id={post.id}></PostEditModal>
+                                    <PostDeleteModal post={post}></PostDeleteModal>
                                 </>
                             )}
 
