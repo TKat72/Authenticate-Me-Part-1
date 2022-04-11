@@ -64,9 +64,9 @@ router.delete('/:postId(\\d+)', asyncHandler(async (req, res) => {
 router.patch('/:postId(\\d+)', validatePost, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.postId, 10);
     const { userId, title, imgUrl, context, availability } = req.body;
-    console.log(id, " post id ")
+
     const result = await Post.findByPk(id);
-    console.log(result)
+   
 
     const updated = await result.update({ userId, title, imgUrl, context, availability })
 

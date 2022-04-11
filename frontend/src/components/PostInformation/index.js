@@ -13,7 +13,7 @@ function PostInfoModal({ id, post }) {
             <button onClick={() => setShowModal(true)} className="signInButt"><NavLink to={`/posts/${id}`}>Info</NavLink></button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <PostInfo post={post} id={id}></PostInfo>
+                    <PostInfo post={post} id={id} setShowModal={setShowModal}></PostInfo>
                 </Modal>
             )}
         </>

@@ -9,6 +9,10 @@ import AddNewPost from "./components/AddNewPost/AddNewPost"
 import DeleteForm from "./components/DeleteFile/DeleteForm";
 import PostInfo from "./components/PostInformation/PostInfo";
 import Splash from "./components/Splash/Splash";
+import RegistrationDisplay from "./components/RegistrationDisplay.js";
+import AddRegistration from "./components/AddRegistration";
+import RegistrationEdit from "./components/RegistrationEdit/RegistrationEdit";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +32,7 @@ function App() {
         <Route exact path="/new">
           <AddNewPost></AddNewPost>
         </Route>
-        <Route path={`/posts/:postId`}>
+        <Route exact path={`/posts/:postId`}>
           <PostInfo></PostInfo>
         </Route>
         <Route exact path='/posts/:postId/delete'>
@@ -37,7 +41,16 @@ function App() {
         <Route exact path={`/`}>
           <Splash></Splash>
         </Route>
+        <Route exact path={`/registration`}>
+          <RegistrationDisplay></RegistrationDisplay>
+        </Route>
+        <Route exact path={'/registration/new'}>
+          <AddRegistration></AddRegistration>
+        </Route>
 
+        <Route>
+          <div>Page not found</div>
+        </Route>
 
       </Switch>
 

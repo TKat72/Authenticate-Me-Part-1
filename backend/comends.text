@@ -127,7 +127,7 @@ npx dotenv sequelize db:seed:all
 create regester
 
 
-fetch('/api/posts/new', {
+fetch('/api/registration/new', {
   method: 'POST',
   headers: {
     "Content-Type": "application/json",
@@ -150,3 +150,56 @@ heroku restart && heroku pg:reset DATABASE --confirm givein1
 heroku restart && heroku pg:reset DATABASE --confirm givein1 && heroku run npm run sequelize db:migrate && heroku run npm run sequelize db:seed:all
 
  git push heroku frontend2:master
+
+
+update register
+
+fetch('/api/registration/1', {
+  method: 'PATCH',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `JE0DghDB-Il-4fLrtSsdIXegHF8CSSZH2lNs`
+  },
+  body: JSON.stringify({
+    name: "Demo update",
+    email: "demo@demo.com",
+    phone: "564-000-0000"
+  })
+}).then(res => res.json()).then(data => console.log(data));
+
+
+fatch for update
+
+ fetch('/api/registration/3', {
+  method: 'PATCH',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `zGBxgjf3-rbLl4zUtsKgEJEyrNkV_3M-Wz3w`
+  },
+  body: JSON.stringify({
+    name: "Hello", email: "test@test.com", phone: "534425363"
+  })
+}).then(res => res.json()).then(data => console.log(data));
+
+
+test for delete
+
+
+fetch('/api/registration/3', {
+  method: 'DELETE',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `341OmZA6-dnAxYotycAkSjB0lq6wTAhKzOs8`
+  },
+}).then(res => res.json()).then(data => console.log(data));
+
+
+
+ fetch('/api/registration/3', {
+  method: 'DELETE',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `zGBxgjf3-rbLl4zUtsKgEJEyrNkV_3M-Wz3w`
+  },
+
+}).then(res => res.json()).then(data => console.log(data));

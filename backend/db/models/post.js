@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   Post.associate = function (models) {
     // associations can be defined here
     Post.belongsTo(models.User, { foreignKey: 'userId' });
-    Post.hasMany(models.Registration, { foreignKey: 'postId' })
+    Post.hasMany(models.Registration, { foreignKey: 'postId', onDelete: "cascade", hooks: true })
   };
   Post.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
     const { userId, title, imgUrl, context, availability } = this; // context will be the User instance

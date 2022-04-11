@@ -14,7 +14,8 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <NavLink to='/new' className={`addPost`}> add New post</NavLink>
+
+                <NavLink to='/new' className={`addPost`}> Create Post</NavLink>
                 <NavLink to="/posts" className={`allPosts`}>posts</NavLink>
                 <ProfileButton user={sessionUser} />
 

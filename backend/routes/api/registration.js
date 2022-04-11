@@ -52,10 +52,35 @@ router.post('/new', asyncHandler(async (req, res) => {
 
 }))
 
-// router.patch("/:registrationId", asyncHandler(async(req, res) = {
+// router.patch("/:registrationId(\\d+)", asyncHandler(async (req, res) => {
+//     const id = parseInt(req.params.registrationId, 10);
+//     const { name, email, phone } = req.body;
+//     const reg = Registration.findByPk(id);
+//     console.log("resulr ", reg)
+//     const updated = await reg.update({ name, email, phone })
 
-
+//     res.json({ updated })
 
 // }))
+router.patch('/:registrationId(\\d+)', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.registrationId, 10);
+    const { name, email, phone } = req.body;
+
+    const result = await Registration.findByPk(id);
+
+
+    const updated = await result.update({ name, email, phone })
+
+    res.json({ updated })
+
+}))
+
+router.delete('/:registrationId(\\d+)', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.registrationId, 10);
+    const result = await Registration.findByPk(id);
+    await result.destroy();
+
+    res.json({ message: " Success!!!!!!!!" })
+}))
 
 module.exports = router;

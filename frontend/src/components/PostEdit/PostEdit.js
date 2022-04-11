@@ -52,7 +52,7 @@ export default function PostEditFrom({ id, post, setShowModal }) {
 
     return (
         <>
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} className="formSignUp" >
                 <ul>
                     {errors.map((err, inx) => <li key={inx}>{err}</li>)}
                 </ul>
@@ -75,7 +75,7 @@ export default function PostEditFrom({ id, post, setShowModal }) {
                 <input type="number"
                     onChange={e => setAvailability(e.target.value)}
                     value={availability}></input>
-                <button >Submit</button>
+                <button disabled={errors.length} >Submit</button>
             </form>
         </>
     )

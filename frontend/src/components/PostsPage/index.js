@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom"
+// import { NavLink, useHistory } from "react-router-dom"
 import * as postActions from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
 import './PostPage.css'
@@ -11,7 +11,7 @@ import PostEditModal from "../PostEdit";
 
 
 export default function PostsPage() {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
 
     const state = useSelector(state => state)
@@ -43,8 +43,8 @@ export default function PostsPage() {
                             <PostInfoModal id={post.id} post={post}></PostInfoModal>
                             {userId === post?.userId && (
                                 <>
-                                    <PostEditModal post={post} id={post.id}><NavLink to={`/posts/${post.id}/edit`}></NavLink></PostEditModal>
-                                    <PostDeleteModal post={post}><NavLink to={`/post/${post.id}/delete`}></NavLink></PostDeleteModal>
+                                    <PostEditModal post={post} id={post.id}></PostEditModal>
+                                    <PostDeleteModal post={post}></PostDeleteModal>
                                 </>
                             )}
 
@@ -52,10 +52,10 @@ export default function PostsPage() {
                         <img
                             src={post?.imgUrl}
                             alt={post?.title}
-                            style={{ height: "200px", borderRadius: "10px", boxShadow: "", width: "280px", margin: "9px" }}
+                            style={{ height: "200px", boxShadow: "", width: "280px", margin: "9px" }}
                         />
-                        <p>{post?.context}</p>
-                        <p>{post?.availability}</p>
+                        <p className="contextDisplay">{post?.context}</p>
+
 
 
 

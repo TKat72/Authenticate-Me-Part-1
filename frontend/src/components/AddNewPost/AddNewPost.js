@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as postAction from "../../store/posts"
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import './AddNewPost.css';
 
 export default function AddNewPost() {
     const history = useHistory()
@@ -48,7 +48,7 @@ export default function AddNewPost() {
 
     return (
         <>
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} className="formSignUp addNew">
                 <ul>
                     {errors.map((err, inx) => <li key={inx}>{err}</li>)}
                 </ul>
