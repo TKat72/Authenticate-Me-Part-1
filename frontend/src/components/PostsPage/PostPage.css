@@ -6,7 +6,7 @@
   transition: 0.3s;
   border-radius: 15px;
   list-style-type: none;
-
+  padding: 10px;
 }
 .postsContainer{
     display: flex;

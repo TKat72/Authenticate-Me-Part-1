@@ -66,7 +66,7 @@ export default function RegistrationEdit({ id, info, setShowModal, postId }) {
                 <input onChange={(e) => setPhone(e.target.value)}
                     value={phone}
                 ></input>
-                <button>Submit</button>
+                <button disabled={errors.length}>Submit</button>
 
 
             </form>

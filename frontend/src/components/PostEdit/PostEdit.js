@@ -75,7 +75,7 @@ export default function PostEditFrom({ id, post, setShowModal }) {
                 <input type="number"
                     onChange={e => setAvailability(e.target.value)}
                     value={availability}></input>
-                <button >Submit</button>
+                <button disabled={errors.length} >Submit</button>
             </form>
         </>
     )
